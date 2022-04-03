@@ -1,4 +1,5 @@
 //getdata function
+var Laodcount = document.getElementsByClassName("cartCount")[0];
 
 async function getCartData(){
     try {
@@ -10,6 +11,11 @@ async function getCartData(){
             }
         });
         let data = await res.json();
+        if (data.length === undefined) {
+            Laodcount.innerText = 0
+          } else {
+            Laodcount.innerText = data.length;
+          }
         return data;
         // console.log(data);
     } catch (error) {
